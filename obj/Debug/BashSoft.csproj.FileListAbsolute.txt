@@ -1,0 +1,5 @@
+D:\BashSoft\bin\Debug\BashSoft.exe.config
+D:\BashSoft\bin\Debug\BashSoft.exe
+D:\BashSoft\bin\Debug\BashSoft.pdb
+D:\BashSoft\obj\Debug\BashSoft.exe
+D:\BashSoft\obj\Debug\BashSoft.pdb
