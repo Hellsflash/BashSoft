@@ -1,30 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BashSoft
 {
     public class InputReader
     {
-        private CommandInterpreter interpreter;
         private const string endCommand = "quit";
 
-        public InputReader(CommandInterpreter interpreter)
+        private CommandInterpreter interpreter;
+
+        public InputReader(CommandInterpreter commandInterpreter)
         {
-            this.interpreter = interpreter;
+            this.interpreter = commandInterpreter;
         }
 
         public void StartReadingCommands()
         {
-            OutputWriter.WriteMessage($"{SessionData.currentPath}" + "> ");
+            OutputWriter.WriteMessage($"{SessionData.currentPath}>");
             string input = Console.ReadLine().Trim();
 
             while (input != endCommand)
             {
-                this.interpreter.InterpredCommand(input);
-                OutputWriter.WriteMessage($"{SessionData.currentPath}" + "> ");
+                this.interpreter.InterpretCommand(input);
+
+                OutputWriter.WriteMessage($"{SessionData.currentPath}>");
                 input = Console.ReadLine().Trim();
             }
         }

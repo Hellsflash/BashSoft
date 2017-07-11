@@ -1,41 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BashSoft.Exceptions;
 
 namespace BashSoft
 {
-   public class RepositorySorter
+    public class RepositorySorter
     {
-        public void OrderAndTake(Dictionary<string, double> studentsWithMarks, string comparison, int studentsToTake)
+        public void OrderAndTake(Dictionary<string, double> studentsWithMarks, string comparison, int studentToTake)
         {
             comparison = comparison.ToLower();
+
             if (comparison == "ascending")
             {
-               this.PrintStudents(studentsWithMarks
-                   .OrderBy(x => x.Value)
-                    .Take(studentsToTake)
-                    .ToDictionary(pair => pair.Key, pair => pair.Value));
+                PrintStudents(studentsWithMarks.OrderBy(x => x.Value)
+                    .Take(studentToTake)
+                    .ToDictionary(pair => pair.Key, kvp => kvp.Value));
             }
-            else if(comparison == "descending")
+            else if (comparison == "descending")
             {
-                this.PrintStudents(studentsWithMarks
-                    .OrderByDescending(x => x.Value)
-                    .Take(studentsToTake)
-                    .ToDictionary(pair => pair.Key, pair => pair.Value));
+                PrintStudents(studentsWithMarks.OrderByDescending(x => x.Value)
+                    .Take(studentToTake)
+                    .ToDictionary(pair => pair.Key, kvp => kvp.Value));
             }
             else
             {
-                OutputWriter.WriteMessageOnNewLine(ExceptionMessages.InvalidQueryComparison);
+                throw new InvalidComparisonQueryException();
             }
         }
 
-        private void PrintStudents(Dictionary<string, double> studentsSorted)
+        private void PrintStudents(Dictionary<string, double> studentsWithMarks)
         {
-            foreach (var kv in studentsSorted)
+            foreach (var kvp in studentsWithMarks)
             {
-                OutputWriter.PrintStudent(kv);
+                OutputWriter.PrintStudent(kvp);
             }
         }
     }

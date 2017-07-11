@@ -3,3 +3,8 @@ D:\BashSoft\bin\Debug\BashSoft.exe
 D:\BashSoft\bin\Debug\BashSoft.pdb
 D:\BashSoft\obj\Debug\BashSoft.exe
 D:\BashSoft\obj\Debug\BashSoft.pdb
+C:\Users\Helly\Source\Repos\BashSoft\obj\Debug\BashSoft.exe
+C:\Users\Helly\Source\Repos\BashSoft\obj\Debug\BashSoft.pdb
+C:\Users\Helly\Source\Repos\BashSoft\bin\Debug\BashSoft.exe.config
+C:\Users\Helly\Source\Repos\BashSoft\bin\Debug\BashSoft.exe
+C:\Users\Helly\Source\Repos\BashSoft\bin\Debug\BashSoft.pdb

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BashSoft.Exceptions;
 
 namespace BashSoft.Models
 {
@@ -7,9 +8,8 @@ namespace BashSoft.Models
         public const int NumberOfTasksOnExam = 5;
         public const int MaxScoreOnExamTask = 100;
 
-        public string name;
-        public Dictionary<string, Student> studentsByName;
-
+        private string name;
+        private Dictionary<string, Student> studentsByName;
 
         public Course(string name)
         {
@@ -17,14 +17,41 @@ namespace BashSoft.Models
             this.studentsByName = new Dictionary<string, Student>();
         }
 
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+
+            private set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new InvalidStringException(nameof(this.name));
+                }
+
+                name = value;
+            }
+        }
+
+        public IReadOnlyDictionary<string, Student> StudentsByName
+        {
+            get
+            {
+                return this.studentsByName;
+            }
+        }
+
         public void EnrollStudent(Student student)
         {
-            if (this.studentsByName.ContainsKey(student.userName))
+            if (this.studentsByName.ContainsKey(student.UserName))
             {
-                OutputWriter.DisplayException(string.Format(ExceptionMessages.StudentAlreadyEnrolledInGivenCourse, student.userName, this.name));
-                return;
+                throw new DuplicateEntryInStructureException(student.UserName, this.name);
             }
-            this.studentsByName.Add(student.userName,student);
+
+            this.studentsByName[student.UserName] = student;
         }
+
     }
 }

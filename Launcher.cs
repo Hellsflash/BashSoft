@@ -6,10 +6,10 @@
         {
             Tester tester = new Tester();
             IOManager ioManager = new IOManager();
-            StudentsRepository repo =new StudentsRepository(new RepositorySorter(),new RepositoryFilter());
+            StudentsRepository repo = new StudentsRepository(new RepositoryFilter(), new RepositorySorter());
 
-            CommandInterpreter currInterpreter= new CommandInterpreter(tester,repo,ioManager);
-            InputReader reader = new InputReader(currInterpreter);
+            CommandInterpreter currentInterpreter = new CommandInterpreter(tester, repo, ioManager);
+            InputReader reader = new InputReader(currentInterpreter);
 
             reader.StartReadingCommands();
         }
